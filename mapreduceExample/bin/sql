@@ -1,0 +1,17 @@
+CREATE TABLE `dwconf` (
+  `jobid` int(11) NOT NULL AUTO_INCREMENT,
+  `zsm` varchar(100) NOT NULL,
+  `zbm` varchar(100) NOT NULL,
+  `zbzb` int(11) NOT NULL,
+  `filename` varchar(100) DEFAULT NULL,
+  `regioncode` int(11) DEFAULT -1,
+  `regionname` int(11) DEFAULT -1,
+  `posttime` int(11) DEFAULT -1,
+  `updatetime` int(11) DEFAULT -1,
+  `addtime` int(11) DEFAULT -1,
+  `fieldsnum` int(11) DEFAULT -1,
+  PRIMARY KEY (`jobid`)
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8;
+
+INSERT INTO dwconf(jobid,zsm,zbm,zbzb,regioncode,regionname,posttime,updatetime,addtime,fieldsnum)
+    VALUES (2,'组织堡垒指数','三会一课',20,3,4,11,10,9,17)
