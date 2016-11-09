@@ -1,9 +1,5 @@
 package com.candythinking.hotwordtopics;
 
-import java.io.IOException;
-import java.util.Comparator;
-import java.util.TreeSet;
-
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
@@ -18,10 +14,13 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
+import java.io.IOException;
+import java.util.Comparator;
+import java.util.TreeSet;
+
 
 public class HotTopicsApp extends Configured implements Tool{
 
-	@Override
 	public int run(String[] args) throws Exception {
 		//该判断方法不能位于main()中，只能位于run()方法中。否则，不会加载-D参数
 		if(args==null ||args.length!=2){
@@ -74,10 +73,9 @@ public class HotTopicsApp extends Configured implements Tool{
 			this.k = conf.getInt("topk", 1);
 			this.type = conf.get("type", "min");
 			if("min".equals(this.type)){
-				topkSet = new TreeSet<>();
+				topkSet = new TreeSet<TFIDFWord>();
 			}else {	
-				topkSet = new TreeSet<>(new Comparator<TFIDFWord>() {
-					@Override
+				topkSet = new TreeSet<TFIDFWord>(new Comparator<TFIDFWord>() {
 					public int compare(TFIDFWord o1, TFIDFWord o2) {
 						return -o1.compareTo(o2);
 					}
@@ -123,7 +121,6 @@ public class HotTopicsApp extends Configured implements Tool{
 			this.itfidf = itfidf;
 			this.word = word;
 		}
-		@Override
 		public int compareTo(TFIDFWord o) {
 			double val = itfidf-o.itfidf;
 			if(val<0)return -1;
@@ -151,10 +148,9 @@ public class HotTopicsApp extends Configured implements Tool{
 			this.k = conf.getInt("topk", 1);
 			this.type = conf.get("type", "min");
 			if("min".equals(this.type)){
-				topkSet = new TreeSet<>();
+				topkSet = new TreeSet<TFIDFWord>();
 			}else {	
-				topkSet = new TreeSet<>(new Comparator<TFIDFWord>() {
-					@Override
+				topkSet = new TreeSet<TFIDFWord>(new Comparator<TFIDFWord>() {
 					public int compare(TFIDFWord o1, TFIDFWord o2) {
 						return -o1.compareTo(o2);
 					}

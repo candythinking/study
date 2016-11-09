@@ -28,8 +28,7 @@ public class IKAnalyzerUtil {
 }
 
 配置文件IKAnalyzer.cfg.xml和stopwords-cn.dic一定放到maven的resources目录下。
-
-yarn jar jar/sequenceFileWriterApp.jar babu/ /members.seq 0  
-yarn jar jar/cntfidf.jar /members.seq /out /out1
-yarn jar jar/hotTopicsApp.jar /out1 /out2 为升序
-或者yarn jar jar/hotTopicsApp.jar -Dtopk=10 -Dtype=max /out1/out2 为取前十个热词
+yarn jar hotwordtopics-1.0-SNAPSHOT.jar com.candythinking.hotwordtopics.SequenceFileWriterApp babu/ ./members.seq 0
+yarn jar hotwordtopics-1.0-SNAPSHOT.jar com.candythinking.hotwordtopics.CnTFIDFApp ./members.seq ./out ./out1
+yarn jar hotwordtopics-1.0-SNAPSHOT.jar com.candythinking.hotwordtopics.HotTopicsApp -Dtopk=10 -Dtype=max ./out1 ./out2      //为取前十个热词
+yarn jar hotwordtopics-1.0-SNAPSHOT.jar com.candythinking.hotwordtopics.HotTopicsApp ./out1 ./out3              //为升序

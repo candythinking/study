@@ -1,12 +1,5 @@
 package com.candythinking.hotwordtopics;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.StringReader;
-import java.net.URI;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
@@ -26,6 +19,13 @@ import org.apache.hadoop.util.ToolRunner;
 import org.wltea.analyzer.core.IKSegmenter;
 import org.wltea.analyzer.core.Lexeme;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
+import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 输入数据全部使用SequenceFile格式，key是文件名、value是文件内容
  * @author Think
@@ -38,7 +38,6 @@ public class CnTFIDFApp extends Configured implements Tool{
 	public static void main(String[] args) throws Exception {
 		ToolRunner.run(new CnTFIDFApp(), args);
 	}
-	@Override
 	public int run(String[] args) throws Exception {
 		if(args==null ||args.length!=3){
 			System.err.println("参数必须有3个，分别是[inputPath] [tempPath]  [outputPath]");
@@ -105,7 +104,7 @@ public class CnTFIDFApp extends Configured implements Tool{
 	        IKSegmenter ik=new IKSegmenter(sr, true);  
 	        Lexeme lex=null;  
 			int allWordsCount = 0;
-			Map<String, Integer> wordTimesMap = new HashMap<>();
+			Map<String, Integer> wordTimesMap = new HashMap<String,Integer>();
 			while ((lex=ik.next())!=null) {
 				allWordsCount++;
 				String word = lex.getLexemeText();
