@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Mon Nov 28 10:50:36 GMT+08:00 2016
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=hive_fat1.jar
+manifest.mergeall=true
+manifest.mainclass=com.candy.main.main
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=
+includes=
